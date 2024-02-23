@@ -9,15 +9,16 @@ import Batallas.Batalla;
  *
  * @author danie
  */
-public class MEDAC_ProgramacionBatalla {
+public class MEDAC_ProgramacionBatalla{
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
         Batalla batalla = new Batalla();
 
-    }
+    } }
     
-}
+
+ 
