@@ -45,10 +45,7 @@ public class Batalla {
             if (chequearGanador() != null) {
                 ganador = chequearGanador();
                     break;
-            } else {
-                continue;
             }
-            
         }
     }
     
