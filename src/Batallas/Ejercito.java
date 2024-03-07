@@ -92,20 +92,17 @@ public class Ejercito {
                     }
                     break;
                 case "d":
-                    try {
-                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso)
-                            && hayGeneral == false) {
+                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso) && !hayGeneral) {
                         unidades.add(new General());
                         saldoPeso += General.PESO_GENERAL;
                         hayGeneral = true;
                         imprimirInfo(unidades.getLast());
+                    } else if (hayGeneral) {
+                        System.out.println("Error: No puedes tener más de un general.");
                     } else {
-                        throw new Exception("Error: No puedes tener más de un general.");
+                        // Manejar otras condiciones o lanzar excepción si lo prefieres
                     }
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-                break;
+                    break;
                 case "e":
                     if (((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso)
                             && contadorAnimales < MAX_Animales) {
