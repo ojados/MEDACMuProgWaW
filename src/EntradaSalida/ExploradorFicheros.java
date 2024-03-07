@@ -20,7 +20,7 @@ public class ExploradorFicheros{
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showOpenDialog(fileChooser) == JFileChooser.APPROVE_OPTION){
             try {
-                return fileChooser.getSelectedFile().getAbsolutePath();                                        
+                return fileChooser.getSelectedFile().getAbsolutePath();                                                                                
 
             } catch (NullPointerException e) {
                 System.out.println("No se ha seleccionado ningún fichero");
