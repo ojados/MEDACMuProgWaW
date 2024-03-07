@@ -183,10 +183,11 @@ public class Ejercito {
     private void actualizarEjercito(){
         Iterator<Componentes> iterador  = unidades.iterator();
         while (iterador.hasNext()){
-                        if ( iterador.next().getSalud() != 0 ){
-                        ataque = ataque + iterador.next().getAtaque();
-                        defensa = defensa + iterador.next().getDefensa();
-                        salud = salud + iterador.next().getSalud();
+                        Componentes componente = iterador.next();
+                        if ( componente.getSalud() != 0 ){
+                        ataque = ataque + componente.getAtaque();
+                        defensa = defensa + componente.getDefensa();
+                        salud = salud + componente.getSalud();
                         }
                     }
     }
