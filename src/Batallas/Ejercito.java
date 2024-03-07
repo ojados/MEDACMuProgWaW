@@ -135,6 +135,11 @@ public class Ejercito {
                     System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
                     break;
                 case "h":
+                    if (!hayGeneral) {
+                        unidades.add(new General());
+                        saldoPeso += General.PESO_GENERAL;
+                        hayGeneral = true;
+                    }
                     Iterator<Componentes> iterador  = unidades.iterator();
                     System.out.println(System.lineSeparator() + "Su Ejército está formado por: " + System.lineSeparator());
                     while (iterador.hasNext()){
