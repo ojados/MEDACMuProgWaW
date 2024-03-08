@@ -3,23 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Batallas;
-import Componentes.Personas.*;
-import Componentes.Animales.*;
-import Componentes.*;
-import Excepciones.People.*;
-import Excepciones.Animals.*;
-import Excepciones.Battle.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import Componentes.Animales.Elefante;
+import Componentes.Animales.Tigre;
+import Componentes.Componentes;
+import Componentes.Personas.Caballeria;
+import Componentes.Personas.General;
+import Componentes.Personas.Infanteria;
+
 import java.util.*;
-import java.util.Collections;
 
 public class Ejercito {
-    
-    private ArrayList<Componentes> unidades = new ArrayList<>();
+
     private final static int MAX_Peso = 50;
     private final static int MAX_Animales = 3;
     private final static int MAXMIN_General = 1;
+    private final static int MIN_UNIDADES = 2;
+    private final ArrayList<Componentes> unidades = new ArrayList<>();
     private boolean hayGeneral = false;
     private int contadorAnimales = 0;
     private int ataque;
@@ -27,34 +27,36 @@ public class Ejercito {
     private int salud;
     private int saldoPeso;
     private String nombre;
-    
-    public Ejercito(){
+
+    public Ejercito() {
         ataque = 0;
         defensa = 0;
         salud = 0;
         saldoPeso = 0;
-            menu();
+        menu();
     }
-    
-    public int getAtaque(){
+
+    public int getAtaque() {
         return ataque;
     }
-    public int getDefensa(){
+
+    public int getDefensa() {
         return defensa;
     }
-    
-    public int getSalud(){
+
+    public int getSalud() {
         return salud;
     }
-    public void setSalud(int salud){
+
+    public void setSalud(int salud) {
         this.salud = salud;
     }
-    public int getSaldoPeso(){
+
+    public int getSaldoPeso() {
         return saldoPeso;
     }
 
-
-    public void menu(){
+    public void menu() {
         Scanner scanner = new Scanner(System.in);
         String opcion;
         do {
@@ -64,144 +66,148 @@ public class Ejercito {
             System.out.println("c) Añadir Caballería");
             System.out.println("d) Añadir General");
             System.out.println("e) Añadir Elefante");
-            System.out.println("f) Añadir Tigre");    
-            System.out.println("g) Consultar Saldo Ejercito");             
+            System.out.println("f) Añadir Tigre");
+            System.out.println("g) Consultar Saldo Ejercito");
             System.out.println("h) Salir y confirmar");
             opcion = scanner.nextLine();
 
             switch (opcion) {
                 case "b":
-                    if ( (saldoPeso + Infanteria.PESO_INFANTERIA) < MAX_Peso ){
+                    if ((saldoPeso + Infanteria.PESO_INFANTERIA) < MAX_Peso) {
                         unidades.add(new Infanteria());
                         saldoPeso += Infanteria.PESO_INFANTERIA;
                         imprimirInfo(unidades.getLast());
                     } else {
-                        //Excepcion
+                        //EXCEPCION
                     }
-                    break;
 
+                    break;
                 case "c":
-                    if ( (saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_Peso ){
+                    if ((saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_Peso) {
                         unidades.add(new Caballeria());
                         saldoPeso += Caballeria.PESO_CABALLERIA;
                         imprimirInfo(unidades.getLast());
                     } else {
-                        //Excepcion
+                        //EXCEPCION
                     }
                     break;
-
                 case "d":
-                    if ( ((saldoPeso + General.PESO_GENERAL) < MAX_Peso )
-                          && hayGeneral == false){
+                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso)
+                            && !hayGeneral
+                    ) {
                         unidades.add(new General());
                         saldoPeso += General.PESO_GENERAL;
                         hayGeneral = true;
                         imprimirInfo(unidades.getLast());
-                    } else
-                        try {
-                        throw new MaxCapGeneral("Solo se permite un solo general");
-                        } catch (MaxCapGeneral e) {
-                            System.out.println("" + e.getMessage());
-                        }
+                    } else {
+                        //EXCEPCION
+                    }
                     break;
-
                 case "e":
-                    if ( ((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso )
-                          && contadorAnimales < MAX_Animales)                    
-                    {
+                    if (((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso)
+                            && contadorAnimales < MAX_Animales) {
                         unidades.add(new Elefante());
                         saldoPeso += Elefante.PESO_ELEFANTE;
                         contadorAnimales += 1;
                         imprimirInfo(unidades.getLast());
-                    } else
-                        try {
-                            throw new MaxCapPesoElefanteExcepcion("La capacidad excede el peso limite");
-                        } catch (MaxCapPesoElefanteExcepcion e) {
-                            System.out.println("" + e.getMessage());
-                        }
+                    } else {
+                        //EXCEPCION
+                    }
                     break;
-
                 case "f":
-                    if ( ((saldoPeso + Tigre.PESO_TIGRE) < MAX_Peso )
-                          && contadorAnimales < MAX_Animales)                             
-                            {
+                    if (((saldoPeso + Tigre.PESO_TIGRE) < MAX_Peso)
+                            && contadorAnimales < MAX_Animales) {
                         unidades.add(new Tigre());
                         saldoPeso += Tigre.PESO_TIGRE;
                         contadorAnimales += 1;
                         imprimirInfo(unidades.getLast());
                     } else {
-                     //EXCEPCION   
+                        //EXCEPCION
                     }
                     break;
-
                 case "a":
                     if ((nombre == null) || (nombre == "")) {
-                    nombre = scanner.nextLine();
-                    System.out.println("Nombre del Ejército: " + nombre);
-                    } else 
-                    {
+                        nombre = scanner.nextLine();
+                        System.out.println("Nombre del Ejército: " + nombre);
+                    } else {
                         System.out.println("Nombre del Ejército: " + nombre);
                     }
-                    break;
 
+                    break;
                 case "g":
                     System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
                     break;
                 case "h":
-                    Iterator<Componentes> iterador  = unidades.iterator();
-                    System.out.println(System.lineSeparator() + "Su Ejército está formado por: " + System.lineSeparator());
-                    while (iterador.hasNext()){
-                        System.out.println(iterador.next());
+                    if (saldoPeso >= MIN_UNIDADES && hayGeneral) {
+                        Iterator<Componentes> iterador = unidades.iterator();
+
+                        System.out.println(System.lineSeparator() + "Su Ejército está formado por: " + System.lineSeparator());
+                        while (iterador.hasNext()) {
+                            System.out.println(iterador.next());
+                        }
+
+                        actualizarEjercito();
+
+                        break;
                     }
-                    actualizarEjercito();
-                    break;                        
+
+                    if (saldoPeso < MIN_UNIDADES) {
+                        System.out.println("El Ejército debe tener al menos 2 unidades");
+                    } else if (!hayGeneral) {
+                        System.out.println("El Ejército debe tener al menos 1 General");
+                    }
+
+                    menu();
+
+                    break;
                 default:
                     System.out.println("Opción no válida");
+                    break;
             }
-        } while (!opcion.equals("h"));        
+        } while (!opcion.equals("h"));
     }
-    
-    private void imprimirInfo(Componentes componente){
+
+    private void imprimirInfo(Componentes componente) {
         System.out.println(
                 "Nuevo Componente Añadido al Ejército: " + System.lineSeparator() + componente);
         System.out.println(System.lineSeparator() + "Saldo actual del Ejército: " + getSaldoPeso()
         );
     }
-    
-    public void recibirDano(int dano){
-        Iterator<Componentes> iterador  = unidades.iterator();
+
+    public void recibirDano(int dano) {
+        Iterator<Componentes> iterador = unidades.iterator();
         Collections.sort(unidades, new Comparator<Componentes>() {
-                @Override
-                public int compare (Componentes c1, Componentes c2){
-                    return new Integer(c1.getSalud()).compareTo(new Integer(c2.getSalud()));
+            @Override
+            public int compare(Componentes c1, Componentes c2) {
+                return Integer.valueOf(c1.getSalud()).compareTo(Integer.valueOf(c2.getSalud()));
+            }
+        });
+        while ((dano > 0) && dano < getSalud()) {
+            while (iterador.hasNext()) {
+                if (iterador.next().getSalud() != 0) {
+                    if (iterador.next().getSalud() > dano) {
+                        setSalud(getSalud() - dano);
+                        dano = 0;
+                        break;
+                    } else {
+                        setSalud(0);
+                        dano -= getSalud();
+                        actualizarEjercito(); // o eliminar elemento
+                    }
                 }
-            });
-        while((dano > 0) && dano < getSalud()){
-            while (iterador.hasNext()){
-                            if ( iterador.next().getSalud() != 0 ){
-                                if (iterador.next().getSalud() > dano ) {
-                                    setSalud(getSalud()-dano);
-                                    dano = 0;
-                                    break;
-                                } else {
-                                    setSalud(0);
-                                    dano -= getSalud();
-                                    actualizarEjercito(); // o eliminar elemento
-                                }
-                            }
-                        }
-        }        
+            }
+        }
     }
-    
+
     private void actualizarEjercito(){
         Iterator<Componentes> iterador  = unidades.iterator();
         while (iterador.hasNext()){
-                        if ( iterador.next().getSalud() != 0 ){
-                        ataque = ataque + iterador.next().getAtaque();
-                        defensa = defensa + iterador.next().getDefensa();
-                        salud = salud + iterador.next().getSalud();
-                        }
-                    }
+            Componentes componente = iterador.next();
+            if ( componente.getSalud() != 0 ){
+                ataque = ataque + componente.getAtaque();
+                defensa = defensa + componente.getDefensa();
+                salud = salud + componente.getSalud();
+            }
+        }
     }
-    
 }
