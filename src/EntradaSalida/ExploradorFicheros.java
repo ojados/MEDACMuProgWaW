@@ -13,6 +13,7 @@ public class ExploradorFicheros{
     {
     }
     public String getNombreFichero(){
+        System.out.println(ruta);
         return ruta;
     }
     public static String leerFichero(){
