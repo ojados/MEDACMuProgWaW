@@ -6,6 +6,9 @@ package Batallas;
 import Componentes.Personas.*;
 import Componentes.Animales.*;
 import Componentes.*;
+import Excepciones.People.*;
+import Excepciones.Animals.*;
+import Excepciones.Battle.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
@@ -43,13 +46,14 @@ public class Ejercito {
     public int getSalud(){
         return salud;
     }
-        public void setSalud(int salud){
+    public void setSalud(int salud){
         this.salud = salud;
     }
     public int getSaldoPeso(){
         return saldoPeso;
-    }    
-    
+    }
+
+
     public void menu(){
         Scanner scanner = new Scanner(System.in);
         String opcion;
@@ -72,31 +76,35 @@ public class Ejercito {
                         saldoPeso += Infanteria.PESO_INFANTERIA;
                         imprimirInfo(unidades.getLast());
                     } else {
-                     //EXCEPCION   
+                        //Excepcion
                     }
-                    
                     break;
+
                 case "c":
                     if ( (saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_Peso ){
                         unidades.add(new Caballeria());
                         saldoPeso += Caballeria.PESO_CABALLERIA;
                         imprimirInfo(unidades.getLast());
                     } else {
-                     //EXCEPCION   
+                        //Excepcion
                     }
                     break;
+
                 case "d":
                     if ( ((saldoPeso + General.PESO_GENERAL) < MAX_Peso )
-                          && hayGeneral == false
-                            ){
+                          && hayGeneral == false){
                         unidades.add(new General());
                         saldoPeso += General.PESO_GENERAL;
                         hayGeneral = true;
                         imprimirInfo(unidades.getLast());
-                    } else {
-                     //EXCEPCION   
-                    }
+                    } else
+                        try {
+                        throw new MaxCapGeneral("Solo se permite un solo general");
+                        } catch (MaxCapGeneral e) {
+                            System.out.println("" + e.getMessage());
+                        }
                     break;
+
                 case "e":
                     if ( ((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso )
                           && contadorAnimales < MAX_Animales)                    
@@ -105,10 +113,14 @@ public class Ejercito {
                         saldoPeso += Elefante.PESO_ELEFANTE;
                         contadorAnimales += 1;
                         imprimirInfo(unidades.getLast());
-                    } else {
-                     //EXCEPCION   
-                    }
+                    } else
+                        try {
+                            throw new MaxCapPesoElefanteExcepcion("La capacidad excede el peso limite");
+                        } catch (MaxCapPesoElefanteExcepcion e) {
+                            System.out.println("" + e.getMessage());
+                        }
                     break;
+
                 case "f":
                     if ( ((saldoPeso + Tigre.PESO_TIGRE) < MAX_Peso )
                           && contadorAnimales < MAX_Animales)                             
@@ -121,6 +133,7 @@ public class Ejercito {
                      //EXCEPCION   
                     }
                     break;
+
                 case "a":
                     if ((nombre == null) || (nombre == "")) {
                     nombre = scanner.nextLine();
@@ -129,8 +142,8 @@ public class Ejercito {
                     {
                         System.out.println("Nombre del Ejército: " + nombre);
                     }
-
                     break;
+
                 case "g":
                     System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
                     break;
