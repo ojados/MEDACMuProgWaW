@@ -16,13 +16,9 @@ public class GestorFicheroEntrada {
     private BufferedReader br;
     private ArrayList<String> nombreGeneral;
     private String nombreDeGeneral;
-    
 
-    public GestorFicheroEntrada(String rutaFichero) throws FileNotFoundException {
-        this.rutaFichero = rutaFichero;
-        File lector = new File(rutaFichero);
-        FileReader fr = new FileReader(lector);
-        this.br = new BufferedReader(fr);
+    public GestorFicheroEntrada() {
+
     }
 
     public ArrayList<String> leerArchivo() throws IOException {
@@ -34,9 +30,7 @@ public class GestorFicheroEntrada {
         return nombreGeneral;
     }
 
-   
-    
-      public static String obtenerNombreGeneral(String rutaFichero) throws IOException {
+    public static String obtenerNombreGeneral(String rutaFichero) throws IOException {
         File lector = new File(rutaFichero);
         FileReader fr = new FileReader(lector);
         BufferedReader br = new BufferedReader(fr);
@@ -52,4 +46,3 @@ public class GestorFicheroEntrada {
         return nombreGeneral.get(indiceGeneralAleatorio);
     }
 }
-
