@@ -25,5 +25,5 @@ public class SerializarEjercito  {
             return (Ejercito) in.readObject();
         }
     }
-//esto es un ensayo
+
 }
