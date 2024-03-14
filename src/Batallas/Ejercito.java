@@ -13,6 +13,13 @@ import Componentes.Personas.Infanteria;
 
 import java.util.*;
 
+/**
+ * <p>Clase que representa un ejército.</p>
+ *
+ * @author Daniel Ojados
+ * @author Daniel Romero
+ * @version 1.0
+ */
 public class Ejercito {
 
     private final static int MAX_Peso = 50;
@@ -48,8 +55,8 @@ public class Ejercito {
         return salud;
     }
 
-    public void setSalud(int salud) {
-        this.salud = salud;
+    public String getNombre() {
+        return nombre;
     }
 
     public int getSaldoPeso() {
@@ -176,38 +183,33 @@ public class Ejercito {
 
     public void recibirDano(int dano) {
         Iterator<Componentes> iterador = unidades.iterator();
-        Collections.sort(unidades, new Comparator<Componentes>() {
-            @Override
-            public int compare(Componentes c1, Componentes c2) {
-                return Integer.valueOf(c1.getSalud()).compareTo(Integer.valueOf(c2.getSalud()));
+
+        while (dano > 0 && iterador.hasNext()) {
+            Componentes componente = iterador.next();
+            componente.recibirDano(dano);
+
+            if (componente.getSalud() < 0) {
+
+                dano = Math.abs(componente.getSalud());
+                iterador.remove();
+                unidades.remove(componente);
+
+                System.out.println("El componente " + componente.getNombre() + " ha sido eliminado del ejército " +
+                        nombre + " por falta de salud");
             }
-        });
-        while ((dano > 0) && dano < getSalud()) {
-            while (iterador.hasNext()) {
-                if (iterador.next().getSalud() != 0) {
-                    if (iterador.next().getSalud() > dano) {
-                        setSalud(getSalud() - dano);
-                        dano = 0;
-                        break;
-                    } else {
-                        setSalud(0);
-                        dano -= getSalud();
-                        actualizarEjercito(); // o eliminar elemento
-                    }
-                }
-            }
+
+            ataque = 0;
+            defensa = 0;
+            salud = 0;
+            actualizarEjercito();
         }
     }
 
     private void actualizarEjercito(){
-        Iterator<Componentes> iterador  = unidades.iterator();
-        while (iterador.hasNext()){
-            Componentes componente = iterador.next();
-            if ( componente.getSalud() != 0 ){
-                ataque = ataque + componente.getAtaque();
-                defensa = defensa + componente.getDefensa();
-                salud = salud + componente.getSalud();
-            }
+        for (Componentes componente : unidades){
+            ataque += componente.getAtaque();
+            defensa += componente.getDefensa();
+            salud += componente.getSalud();
         }
     }
 }
