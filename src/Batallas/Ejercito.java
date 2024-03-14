@@ -92,15 +92,15 @@ public class Ejercito {
                     }
                     break;
                 case "d":
-                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso)
-                            && !hayGeneral
-                    ) {
+                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso) && !hayGeneral) {
                         unidades.add(new General());
                         saldoPeso += General.PESO_GENERAL;
                         hayGeneral = true;
                         imprimirInfo(unidades.getLast());
+                    } else if (hayGeneral) {
+                        System.out.println("Error: No puedes tener más de un general.");
                     } else {
-                        //EXCEPCION
+                        // Manejar otras condiciones o lanzar excepción si lo prefieres
                     }
                     break;
                 case "e":
@@ -199,11 +199,11 @@ public class Ejercito {
         }
     }
 
-    private void actualizarEjercito(){
-        Iterator<Componentes> iterador  = unidades.iterator();
-        while (iterador.hasNext()){
+    private void actualizarEjercito() {
+        Iterator<Componentes> iterador = unidades.iterator();
+        while (iterador.hasNext()) {
             Componentes componente = iterador.next();
-            if ( componente.getSalud() != 0 ){
+            if (componente.getSalud() != 0) {
                 ataque = ataque + componente.getAtaque();
                 defensa = defensa + componente.getDefensa();
                 salud = salud + componente.getSalud();
