@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package medac_programacionbatalla;
-import Componentes.*;
-import EntradaSalida.ExploradorFicheros;
-import Batallas.Batalla;
+import batallas.Batalla;
 /**
  *
  * @author danie

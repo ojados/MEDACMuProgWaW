@@ -1,4 +1,4 @@
-package Excepciones.Animals;
+package excepciones.animales;
 
 public class MaxCapPesoElefanteExcepcion extends Exception {
 

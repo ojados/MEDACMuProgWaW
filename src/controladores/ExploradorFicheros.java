@@ -1,7 +1,5 @@
 
-package EntradaSalida;
-import java.io.*;
-import java.util.Scanner;
+package controladores;
 import javax.swing.JFileChooser;
 
 public class ExploradorFicheros{

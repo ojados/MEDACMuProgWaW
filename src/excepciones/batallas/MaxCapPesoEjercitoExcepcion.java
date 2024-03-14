@@ -1,4 +1,4 @@
-package Excepciones.Battle;
+package excepciones.batallas;
 
 public class MaxCapPesoEjercitoExcepcion extends Exception {
 

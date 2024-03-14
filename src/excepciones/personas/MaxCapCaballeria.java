@@ -1,4 +1,4 @@
-package Excepciones.People;
+package excepciones.personas;
 
 public class MaxCapCaballeria extends Exception{
     static int caballeriaPeso = 2;

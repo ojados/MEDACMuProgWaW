@@ -1,4 +1,4 @@
-package Excepciones.People;
+package excepciones.personas;
 
 public class MaxCapGeneral extends Exception {
 

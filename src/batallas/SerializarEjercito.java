@@ -1,5 +1,5 @@
 
-package Batallas;
+package batallas;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

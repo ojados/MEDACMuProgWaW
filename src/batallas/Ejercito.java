@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Batallas;
+package batallas;
 
-import Componentes.Animales.Elefante;
-import Componentes.Animales.Tigre;
-import Componentes.Componentes;
-import Componentes.Personas.Caballeria;
-import Componentes.Personas.General;
-import Componentes.Personas.Infanteria;
+import componentes.animales.Elefante;
+import componentes.animales.Tigre;
+import componentes.Componentes;
+import componentes.personas.Caballeria;
+import componentes.personas.General;
+import componentes.personas.Infanteria;
 
 import java.util.*;
 
@@ -22,10 +22,10 @@ import java.util.*;
  */
 public class Ejercito {
 
-    private final static int MAX_Peso = 50;
-    private final static int MAX_Animales = 3;
-    private final static int MAXMIN_General = 1;
-    private final static int MIN_UNIDADES = 2;
+    private static final int MAX_PESO = 50;
+    private static final int MAX_ANIMALES = 3;
+    private static final int MX_MN_GENERAL = 1;
+    private static final int MIN_UNIDADES = 2;
     private final ArrayList<Componentes> unidades = new ArrayList<>();
     private boolean hayGeneral = false;
     private int contadorAnimales = 0;
@@ -63,7 +63,7 @@ public class Ejercito {
         return saldoPeso;
     }
 
-    public void menu() {
+    private void menu() {
         Scanner scanner = new Scanner(System.in);
         String opcion;
         do {
@@ -79,8 +79,17 @@ public class Ejercito {
             opcion = scanner.nextLine();
 
             switch (opcion) {
+                case "a":
+                    if ((nombre == null) || (nombre == "")) {
+                        nombre = scanner.nextLine();
+                        System.out.println("Nombre del Ejército: " + nombre);
+                    } else {
+                        System.out.println("Nombre del Ejército: " + nombre);
+                    }
+
+                    break;
                 case "b":
-                    if ((saldoPeso + Infanteria.PESO_INFANTERIA) < MAX_Peso) {
+                    if ((saldoPeso + Infanteria.PESO_INFANTERIA) < MAX_PESO) {
                         unidades.add(new Infanteria());
                         saldoPeso += Infanteria.PESO_INFANTERIA;
                         imprimirInfo(unidades.getLast());
@@ -90,7 +99,7 @@ public class Ejercito {
 
                     break;
                 case "c":
-                    if ((saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_Peso) {
+                    if ((saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_PESO) {
                         unidades.add(new Caballeria());
                         saldoPeso += Caballeria.PESO_CABALLERIA;
                         imprimirInfo(unidades.getLast());
@@ -99,7 +108,7 @@ public class Ejercito {
                     }
                     break;
                 case "d":
-                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso)
+                    if (((saldoPeso + General.PESO_GENERAL) < MAX_PESO)
                             && !hayGeneral
                     ) {
                         unidades.add(new General());
@@ -111,8 +120,8 @@ public class Ejercito {
                     }
                     break;
                 case "e":
-                    if (((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso)
-                            && contadorAnimales < MAX_Animales) {
+                    if (((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_PESO)
+                            && contadorAnimales < MAX_ANIMALES) {
                         unidades.add(new Elefante());
                         saldoPeso += Elefante.PESO_ELEFANTE;
                         contadorAnimales += 1;
@@ -122,8 +131,8 @@ public class Ejercito {
                     }
                     break;
                 case "f":
-                    if (((saldoPeso + Tigre.PESO_TIGRE) < MAX_Peso)
-                            && contadorAnimales < MAX_Animales) {
+                    if (((saldoPeso + Tigre.PESO_TIGRE) < MAX_PESO)
+                            && contadorAnimales < MAX_ANIMALES) {
                         unidades.add(new Tigre());
                         saldoPeso += Tigre.PESO_TIGRE;
                         contadorAnimales += 1;
@@ -131,15 +140,6 @@ public class Ejercito {
                     } else {
                         //EXCEPCION
                     }
-                    break;
-                case "a":
-                    if ((nombre == null) || (nombre == "")) {
-                        nombre = scanner.nextLine();
-                        System.out.println("Nombre del Ejército: " + nombre);
-                    } else {
-                        System.out.println("Nombre del Ejército: " + nombre);
-                    }
-
                     break;
                 case "g":
                     System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
