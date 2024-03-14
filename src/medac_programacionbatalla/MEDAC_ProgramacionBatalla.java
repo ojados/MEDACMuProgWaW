@@ -14,11 +14,9 @@ public class MEDAC_ProgramacionBatalla{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    Batalla batalla = new Batalla();
 
-        Batalla batalla = new Batalla();
-
-    } }
+    }
     
 
  
