@@ -75,7 +75,8 @@ public class Ejercito {
             System.out.println("e) Añadir Elefante");
             System.out.println("f) Añadir Tigre");
             System.out.println("g) Consultar Saldo Ejercito");
-            System.out.println("h) Salir y confirmar");
+            System.out.println("h) Eliminar elemento");
+            System.out.println("i) Salir y confirmar");
             opcion = scanner.nextLine();
 
             switch (opcion) {
@@ -169,6 +170,16 @@ public class Ejercito {
                     System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
                     break;
                 case "h":
+                    if (unidades.isEmpty()) {
+                        Componentes lastUnit = unidades.removeLast();
+                        saldoPeso -= lastUnit.getPeso();
+                        System.out.println("Se ha eliminado el último elemento creado: " + lastUnit);
+                        System.out.println("Saldo actual del Ejército: " + getSaldoPeso());
+                    } else {
+                        System.out.println("No hay elementos para eliminar.");
+                    }
+                    break;
+                case "i":
                     if (saldoPeso >= MIN_UNIDADES && hayGeneral) {
                         Iterator<Componentes> iterador = unidades.iterator();
 
