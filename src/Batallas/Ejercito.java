@@ -80,26 +80,35 @@ public class Ejercito {
 
             switch (opcion) {
                 case "b":
-                    if ((saldoPeso + Infanteria.PESO_INFANTERIA) < MAX_Peso) {
+                    if ((saldoPeso + Infanteria.PESO_INFANTERIA) <= MAX_Peso) {
                         unidades.add(new Infanteria());
                         saldoPeso += Infanteria.PESO_INFANTERIA;
                         imprimirInfo(unidades.getLast());
+                    } else {     if (saldoPeso == MAX_Peso) {
+                        System.out.println("Tu ejército está completo. No puedes añadir más unidades.");
                     } else {
-                        //EXCEPCION
+                        System.out.println("No puedes añadir esta unidad de Infanteria porque superaría el límite de peso máximo.");
                     }
 
+                    }
                     break;
                 case "c":
-                    if ((saldoPeso + Caballeria.PESO_CABALLERIA) < MAX_Peso) {
+                    if ((saldoPeso + Caballeria.PESO_CABALLERIA) <= MAX_Peso) {
                         unidades.add(new Caballeria());
                         saldoPeso += Caballeria.PESO_CABALLERIA;
                         imprimirInfo(unidades.getLast());
                     } else {
-                        //EXCEPCION
+                        if (saldoPeso == MAX_Peso) {
+                            System.out.println("Tu ejército está completo. No puedes añadir más unidades.");
+                        } else {
+                            System.out.println("No puedes añadir esta unidad de CABALLERIA porque superaría el límite de peso máximo.");
+                        }
                     }
+
+
                     break;
                 case "d":
-                    if (((saldoPeso + General.PESO_GENERAL) < MAX_Peso)
+                    if (((saldoPeso + General.PESO_GENERAL) <= MAX_Peso)
                             && !hayGeneral
                     ) {
                         unidades.add(new General());
@@ -107,31 +116,46 @@ public class Ejercito {
                         hayGeneral = true;
                         imprimirInfo(unidades.getLast());
                     } else {
-                        //EXCEPCION
+                        if (saldoPeso >= MAX_Peso) {
+                            System.out.println("No puedes añadir esta unidad de General porque superaría el límite de peso máximo.");
+                        } else if (saldoPeso == MAX_Peso) {
+                            System.out.println("Tu ejército está completo. No puedes añadir más unidades.");
+                        }
                     }
                     break;
                 case "e":
-                    if (((saldoPeso + Elefante.PESO_ELEFANTE) < MAX_Peso)
-                            && contadorAnimales < MAX_Animales) {
+                    if (saldoPeso == MAX_Peso) {
+                        System.out.println("Tu ejército está completo. No puedes añadir más unidades.");
+                    } else if (contadorAnimales == MAX_Animales) {
+                        System.out.println("Ya tienes el espacio de los animales completo");
+                    } else if ((saldoPeso + Elefante.PESO_ELEFANTE) > MAX_Peso) {
+                        System.out.println("No puedes añadir esta unidad de Elefante porque superaría el límite de peso máximo.");
+                    } else if ((saldoPeso + Elefante.PESO_ELEFANTE) > MAX_Peso) {
+                        System.out.println("No puedes añadir esta unidad de Elefante porque superaría el límite de peso máximo.");
+                    } else {
                         unidades.add(new Elefante());
                         saldoPeso += Elefante.PESO_ELEFANTE;
                         contadorAnimales += 1;
                         imprimirInfo(unidades.getLast());
-                    } else {
-                        //EXCEPCION
                     }
                     break;
                 case "f":
-                    if (((saldoPeso + Tigre.PESO_TIGRE) < MAX_Peso)
-                            && contadorAnimales < MAX_Animales) {
+                    if (saldoPeso == MAX_Peso) {
+                        System.out.println("Tu ejército está completo. No puedes añadir más unidades.");
+                    } else if (contadorAnimales == MAX_Animales) {
+                        System.out.println("Ya tienes el espacio de los animales completo");
+                    } else if ((saldoPeso + Tigre.PESO_TIGRE) > MAX_Peso) {
+                        System.out.println("No puedes añadir esta unidad de Elefante porque superaría el límite de peso máximo.");
+                    } else if ((saldoPeso + Tigre.PESO_TIGRE) > MAX_Peso) {
+                        System.out.println("No puedes añadir esta unidad de Elefante porque superaría el límite de peso máximo.");
+                    } else {
                         unidades.add(new Tigre());
                         saldoPeso += Tigre.PESO_TIGRE;
                         contadorAnimales += 1;
                         imprimirInfo(unidades.getLast());
-                    } else {
-                        //EXCEPCION
                     }
                     break;
+
                 case "a":
                     if ((nombre == null) || (nombre == "")) {
                         nombre = scanner.nextLine();
