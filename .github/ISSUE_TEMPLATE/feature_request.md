@@ -1,0 +1,20 @@
+---
+name: Solicitud de función
+about: Sugiere una idea para este proyecto
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+**¿Está relacionada tu solicitud de función con un problema? Por favor, describe.**
+Una descripción clara y concisa del problema. Por ejemplo: Siempre me frustro cuando [...]
+
+**Describe la solución que te gustaría**
+Una descripción clara y concisa de lo que te gustaría que sucediera.
+
+**Describe alternativas que has considerado**
+Una descripción clara y concisa de cualquier solución alternativa o características que hayas considerado.
+
+**Contexto adicional**
+Agrega cualquier otro contexto o capturas de pantalla sobre la solicitud de función aquí.

@@ -5,9 +5,13 @@
 package Componentes;
 import java.util.ArrayList;
 import java.util.Random;
+
 /**
+ * <p>Clase que representa un componente de un ejército.</p>
  *
- * @author danie
+ * @author Daniel Ojados
+ * @author Daniel Romero
+ * @version 1.0
  */
 public class Componentes {
     private String nombre;
@@ -77,16 +81,9 @@ public class Componentes {
         this.multiplicador = multiplicador;
     }      
     
-    public int recibirDano(int dano){
-        if ( dano > this.salud ) {
-            salud = 0;
-            ataque = 0;
-            defensa = 0;
-            return ( dano - salud );
-        } else {
-            salud = salud - dano;
-            return 0;
-        }
+    public int recibirDano(int dano) {
+        salud -= dano;
+        return salud;
     }
     
     public static String getID(){
