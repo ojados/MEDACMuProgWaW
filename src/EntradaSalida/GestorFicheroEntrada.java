@@ -29,8 +29,11 @@ public class GestorFicheroEntrada {
         }
         return nombreGeneral;
     }
-
-    public static String obtenerNombreGeneral(String rutaFichero) throws IOException {
+    
+    /**
+     * @param rutaFichero
+    */
+    public static String obtenerNombreGeneral(String rutaFichero) throws IOException { 
         File lector = new File(rutaFichero);
         FileReader fr = new FileReader(lector);
         BufferedReader br = new BufferedReader(fr);
