@@ -15,7 +15,7 @@ import java.util.Random;
  * @version 1.0
  */
 public class Batalla {
-    private static final int MAX_Rondas = 5;
+    private static final int MAX_RONDAS = 5;
     private final Ejercito ejercito1;
     private final Ejercito ejercito2;
     private int numRondas;
@@ -44,7 +44,7 @@ public class Batalla {
         }
 
         if (ejercito1.getSalud() > 0 && ejercito2.getSalud() > 0) {
-            for (numRondas = 0; numRondas < MAX_Rondas; numRondas++) {
+            for (numRondas = 0; numRondas < MAX_RONDAS; numRondas++) {
                 rondas.add(new Ronda(numRondas, atacante, defensor));
                 int resultado = rondas.getLast().getResultado();
                 if (resultado > 0) {
