@@ -1,24 +1,22 @@
 
 package controladores;
-import javax.swing.JFileChooser;
 
-public class ExploradorFicheros{
+import javax.swing.*;
+
+public class ExploradorFicheros {
 
     // JLabel para mostrar los archivos seleccionados por el usuario
     String ruta;
 
-    public ExploradorFicheros()
-    {
-    }
-    public String getNombreFichero(){
-        return ruta;
+    public ExploradorFicheros() {
+
     }
     public static String leerFichero(){
 
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showOpenDialog(fileChooser) == JFileChooser.APPROVE_OPTION){
             try {
-                return fileChooser.getSelectedFile().getAbsolutePath();                                                                                
+                return fileChooser.getSelectedFile().getAbsolutePath();
 
             } catch (NullPointerException e) {
                 System.out.println("No se ha seleccionado ningún fichero");
@@ -26,18 +24,18 @@ public class ExploradorFicheros{
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 return null;
-            }    
+            }
         }
         else {
-                return null;
-                }
+            return null;
+        }
     }
-    
+
     public static String escribirFichero(){
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showSaveDialog(fileChooser) == JFileChooser.APPROVE_OPTION){
             try {
-                return fileChooser.getSelectedFile().getAbsolutePath();                                        
+                return fileChooser.getSelectedFile().getAbsolutePath();
 
             } catch (NullPointerException e) {
                 System.out.println("No se ha seleccionado ningún fichero");
@@ -45,11 +43,16 @@ public class ExploradorFicheros{
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 return null;
-            }    
+            }
         }
         else {
-                return null;
-                }
-            
-    }    
+            return null;
+        }
+
+    }
+
+    public String getNombreFichero(){
+        System.out.println(ruta);
+        return ruta;
+    }
 }
