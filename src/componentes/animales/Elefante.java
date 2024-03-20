@@ -16,7 +16,6 @@ public class Elefante extends Animal{
 public static final int PESO_ELEFANTE = 10;    
     public Elefante(){
         super();
-        Random random = new Random(); 
         setMultiplicador(2f);   
         setPeso(10);
 

@@ -4,6 +4,8 @@
  */
 package componentes.personas;
 
+import controladores.ExploradorFicheros;
+
 import java.util.List;
 import java.util.Random;
 
@@ -11,7 +13,7 @@ import java.util.Random;
  *
  * @author danie
  */
-public class General extends Persona{
+public class General extends Persona {
 public static final int PESO_GENERAL = 1;    
     public General(){
         super();
@@ -23,7 +25,7 @@ public static final int PESO_GENERAL = 1;
         setAtaque((int) Math.ceil(atributos.get(0)*getMultiplicador()));
         setDefensa((int) Math.ceil(atributos.get(1)*getMultiplicador()));
         setSalud((int) Math.ceil(atributos.get(2)*getMultiplicador()));
-//        setNombre(LLAMAR A FUNCION QUE DEVUELVE NOMBRE RANDOM DESDE FICHERO);
+//        setNombre();
     }
        
     @Override

@@ -3,27 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package componentes.personas;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
- *
  * @author danie
  */
-public class Infanteria extends Persona{
+public class Infanteria extends Persona {
     public static final int PESO_INFANTERIA = 1;
-    public Infanteria(){
+
+    public Infanteria() {
         super();
-        setMultiplicador(1f);   
-        setPeso(PESO_INFANTERIA);        
+        setMultiplicador(1f);
+        setPeso(PESO_INFANTERIA);
         List<Integer> atributos = generarAtributos(100);
-        setAtaque((int) Math.ceil(atributos.get(0)*getMultiplicador()));
-        setDefensa((int) Math.ceil(atributos.get(1)*getMultiplicador()));
-        setSalud((int) Math.ceil(atributos.get(2)*getMultiplicador()));
+        setAtaque((int) Math.ceil(atributos.get(0) * getMultiplicador()));
+        setDefensa((int) Math.ceil(atributos.get(1) * getMultiplicador()));
+        setSalud((int) Math.ceil(atributos.get(2) * getMultiplicador()));
     }
-    
+
     @Override
-public String toString() {
+    public String toString() {
         return "Soldado de Infanteria {" +
                 "Nombre='" + this.getNombre() + '\'' +
                 ", Ataque='" + this.getAtaque() + '\'' +
@@ -31,5 +31,5 @@ public String toString() {
                 ", Salud='" + this.getSalud() + '\'' +
                 ", Peso='" + this.getPeso() + '\'' +
                 '}';
-    }    
+    }
 }

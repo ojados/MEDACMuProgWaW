@@ -3,18 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package componentes.personas;
+
 import componentes.Componentes;
 
 /**
- *
  * @author danie
  */
 public abstract class Persona extends Componentes {
-    public Persona(){
+    protected Persona() {
         super();
     }
-    
-   
 }
 
 

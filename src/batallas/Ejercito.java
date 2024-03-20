@@ -4,9 +4,9 @@
  */
 package batallas;
 
+import componentes.Componentes;
 import componentes.animales.Elefante;
 import componentes.animales.Tigre;
-import componentes.Componentes;
 import componentes.personas.Caballeria;
 import componentes.personas.General;
 import componentes.personas.Infanteria;
@@ -15,7 +15,10 @@ import excepciones.batallas.*;
 import excepciones.personas.GeneralMinimoException;
 import excepciones.personas.MaxCapGeneralException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * <p>Clase que representa un ejército.</p>
@@ -41,6 +44,7 @@ public class Ejercito {
 
     public Ejercito() {
 
+        nombre = "";
         saldoPeso = 0;
         restablecerAtributos();
         menu();
@@ -85,7 +89,7 @@ public class Ejercito {
 
             switch (opcion) {
                 case "a":
-                    if (nombre == null || nombre.isEmpty()) {
+                    if (nombre.isBlank() || nombre.isEmpty()) {
                         System.out.print(System.lineSeparator() + "Asignale un nombre a tu ejército: ");
 
                         asignarNombre(scanner.nextLine());
@@ -241,12 +245,14 @@ public class Ejercito {
                         System.out.println(e.getMessage());
                     }
 
+                    menu();
+
                     break;
                 default:
                     System.out.println(Message.OPCION_INAVLIDA);
                     break;
             }
-        } while (!opcion.equals("h"));
+        } while (!opcion.equals("i"));
     }
 
     private void imprimirInfo(Componentes componente) {
@@ -306,17 +312,28 @@ public class Ejercito {
     }
 
     private void eliminarUnidad(String nombreUnidad) {
-        for (Componentes unidad : unidades) {
-            if (unidad.getNombre().equals(nombreUnidad)) {
-                if (unidad instanceof General) {
-                    hayGeneral = false;
-                } else if (unidad instanceof Elefante || unidad instanceof Tigre) {
-                    contadorAnimales--;
-                }
 
-                unidades.remove(unidad);
-                saldoPeso -= unidad.getPeso();
+        try {
+            for (Componentes unidad : unidades) {
+                if (unidad.getNombre().equalsIgnoreCase(nombreUnidad)) {
+                    if (unidad instanceof General) {
+                        hayGeneral = false;
+                    } else if (unidad instanceof Elefante || unidad instanceof Tigre) {
+                        contadorAnimales--;
+                    }
+
+                    unidades.remove(unidad);
+                    saldoPeso -= unidad.getPeso();
+
+                    System.out.println(unidad.getNombre() + ": " + Message.UNIDAD_ELIM_SATIS);
+
+                    break;
+                } else {
+                    throw new UnidadInexistenteException(Message.UNIDAD_INEXISTENTE);
+                }
             }
+        } catch (UnidadInexistenteException e) {
+            System.out.println(e.getMessage());
         }
     }
 

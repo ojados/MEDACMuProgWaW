@@ -4,14 +4,13 @@
  */
 package componentes.personas;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author danie
  */
-public class Caballeria extends Persona{
+public class Caballeria extends Persona {
     public static final int PESO_CABALLERIA = 2;
     public Caballeria(){
         super();
