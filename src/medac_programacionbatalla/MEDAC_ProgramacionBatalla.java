@@ -20,7 +20,5 @@ public class MEDAC_ProgramacionBatalla{
 //        String test = ExploradorFicheros.leerFichero();
         Batalla batalla = new Batalla();
 
-    } }
-    
-
- 
+    } 
+}
