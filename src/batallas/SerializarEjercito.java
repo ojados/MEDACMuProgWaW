@@ -13,15 +13,15 @@ import java.io.ObjectOutputStream;
  */
 public class SerializarEjercito  {
 
-    public static void serializar(Ejercito ejercito, String archivo_ejercito) throws IOException {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivo_ejercito))) {
+    public static void serializar(Ejercito ejercito, String archivoEjercito) throws IOException {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(archivoEjercito))) {
             out.writeObject(ejercito);
         }
 
     }
 
-    public static Ejercito deserializar(String archivo_ejercito) throws IOException, ClassNotFoundException {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo_ejercito))) {
+    public static Ejercito deserializar(String archivoEjercito) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivoEjercito))) {
             return (Ejercito) in.readObject();
         }
     }

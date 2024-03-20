@@ -4,6 +4,7 @@
  */
 package componentes;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -14,13 +15,16 @@ import java.util.Random;
  * @version 1.0
  */
 public class Componentes {
+
+    private static final int MINIMO_ATRIBUTOS = 25;
+    private static final Random random = new Random();
     private String nombre;
     private int ataque;
     private int defensa;
     private int salud;
     private int peso;
     private float multiplicador;
-    private static ArrayList<Integer> ids = new ArrayList<Integer>();
+    private static final ArrayList<Integer> ids = new ArrayList<>();
     
   
     public Componentes(){
@@ -52,7 +56,7 @@ public class Componentes {
         return peso;
     }    
     
-        public float getMultiplicador(){
+    public float getMultiplicador(){
         return multiplicador;
     }   
     
@@ -81,21 +85,15 @@ public class Componentes {
         this.multiplicador = multiplicador;
     }      
     
-    public int recibirDano(int dano) {
+    public void recibirDano(int dano) {
         salud -= dano;
-        return salud;
     }
     
     public static String getID(){
-        Integer rID = 0;
-        Random random = new Random();        
-        while (1 == 1) {
-
-        rID = random.nextInt(1000);
-            if (ids.contains(rID)){
-              continue; 
-            }
-            else {
+        Integer rID;
+        while (true) {
+            rID = random.nextInt(1000);
+            if (!ids.contains(rID)){
                 ids.add(rID);
                 break;
             }
@@ -103,19 +101,24 @@ public class Componentes {
         return Integer.toString(rID);
     }
     
-    public ArrayList<Integer> generarAtributos(int limiteSuperior){
+    public List<Integer> generarAtributos(int limiteSuperior){
         ArrayList<Integer> atributos = new ArrayList<>();
-        Random random = new Random();   
-        
-        atributos.add(random.nextInt(limiteSuperior));
-        atributos.add(random.nextInt((limiteSuperior-atributos.getFirst())));
-        atributos.add(limiteSuperior-(atributos.getFirst()+atributos.get(1)));
+
+        atributos.add(random.nextInt(MINIMO_ATRIBUTOS, limiteSuperior));
+        atributos.add(random.nextInt(limiteSuperior - atributos.get(0)));
+        atributos.add(limiteSuperior - (atributos.get(1) + atributos.get(0)));
+
+        for (Integer atributo : atributos) {
+            if (atributo.equals(0)) {
+                generarAtributos(limiteSuperior);
+            }
+        }
         
         return atributos;
     }    
     
     @Override
-public String toString() {
+    public String toString() {
         return "Componente{" +
                 "Nombre='" + this.getNombre() + '\'' +
                 ", Ataque='" + this.getAtaque() + '\'' +

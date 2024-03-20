@@ -4,7 +4,7 @@
  */
 package componentes.personas;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -17,11 +17,12 @@ public static final int PESO_GENERAL = 1;
         super();
         Random random = new Random(); 
         setMultiplicador(random.nextFloat(2, 3));   
-        setPeso(PESO_GENERAL);        
-        ArrayList<Integer> atributos = generarAtributos(100);
+        setPeso(PESO_GENERAL);
+
+        List<Integer> atributos = generarAtributos(100);
         setAtaque((int) Math.ceil(atributos.get(0)*getMultiplicador()));
         setDefensa((int) Math.ceil(atributos.get(1)*getMultiplicador()));
-        setSalud((int) Math.ceil(atributos.get(2)*getMultiplicador())); 
+        setSalud((int) Math.ceil(atributos.get(2)*getMultiplicador()));
 //        setNombre(LLAMAR A FUNCION QUE DEVUELVE NOMBRE RANDOM DESDE FICHERO);
     }
        

@@ -21,6 +21,7 @@ public class Batalla {
     private int numRondas;
     private Ejercito ganador;
     private final ArrayList<Ronda> rondas;
+    private final Random random = new Random();
 
     public Batalla() {
         ejercito1 = new Ejercito();
@@ -31,8 +32,6 @@ public class Batalla {
     }
 
     private void luchar() {
-        Random random = new Random();
-
         Ejercito atacante;
         Ejercito defensor;
 
@@ -55,6 +54,14 @@ public class Batalla {
                 }
 
                 if (chequearGanador()) {
+                    if (getGanador() == ejercito1) {
+                        System.out.println(System.lineSeparator() + Message.EJERCITO_GANADOR +
+                                ejercito1.getNombre());
+                    } else {
+                        System.out.println(System.lineSeparator() + Message.EJERCITO_GANADOR +
+                                ejercito2.getNombre());
+                    }
+
                     break;
                 }
 
@@ -71,16 +78,17 @@ public class Batalla {
 
     private boolean chequearGanador() {
         if (ejercito1.getSalud() == 0) {
-            System.out.println(System.lineSeparator() + "El ganador es el ejército " +
-                    ejercito2.getNombre());
+            ganador = ejercito2;
             return true;
         } else if (ejercito2.getSalud() == 0) {
-            System.out.println(System.lineSeparator() + "El ganador es el ejército " +
-                    ejercito1.getNombre());
+            ganador = ejercito1;
             return true;
         }
 
         return false;
     }
 
+    public Ejercito getGanador() {
+        return ganador;
+    }
 }

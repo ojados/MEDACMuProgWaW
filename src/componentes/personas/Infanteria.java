@@ -4,6 +4,8 @@
  */
 package componentes.personas;
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author danie
@@ -14,7 +16,7 @@ public class Infanteria extends Persona{
         super();
         setMultiplicador(1f);   
         setPeso(PESO_INFANTERIA);        
-        ArrayList<Integer> atributos = generarAtributos(100);
+        List<Integer> atributos = generarAtributos(100);
         setAtaque((int) Math.ceil(atributos.get(0)*getMultiplicador()));
         setDefensa((int) Math.ceil(atributos.get(1)*getMultiplicador()));
         setSalud((int) Math.ceil(atributos.get(2)*getMultiplicador()));
