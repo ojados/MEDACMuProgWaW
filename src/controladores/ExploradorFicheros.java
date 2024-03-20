@@ -11,6 +11,7 @@ public class ExploradorFicheros {
     public ExploradorFicheros() {
 
     }
+
     public static String leerFichero(){
 
         JFileChooser fileChooser = new JFileChooser();
