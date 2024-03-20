@@ -11,10 +11,7 @@ import componentes.personas.Caballeria;
 import componentes.personas.General;
 import componentes.personas.Infanteria;
 import excepciones.animales.MaxAnimalesException;
-import excepciones.batallas.EjercitoNombreException;
-import excepciones.batallas.EjercitoVacioException;
-import excepciones.batallas.MaxCapPesoEjercitoException;
-import excepciones.batallas.UnidadMinimaException;
+import excepciones.batallas.*;
 import excepciones.personas.GeneralMinimoException;
 import excepciones.personas.MaxCapGeneralException;
 
@@ -33,8 +30,8 @@ public class Ejercito {
     private static final int MAX_ANIMALES = 3;
     private static final int MIN_UNIDADES = 2;
     private int contadorAnimales = 0;
-
     private final ArrayList<Componentes> unidades = new ArrayList<>();
+    private static final List<String> nombres = new ArrayList<>();
     private boolean hayGeneral = false;
     private int ataque;
     private int defensa;
@@ -91,7 +88,7 @@ public class Ejercito {
                     if (nombre == null || nombre.isEmpty()) {
                         System.out.print(System.lineSeparator() + "Asignale un nombre a tu ejército: ");
 
-                        nombre = scanner.nextLine();
+                        asignarNombre(scanner.nextLine());
                         System.out.println("Nombre del ejército: " + nombre + System.lineSeparator());
                     } else {
                         System.out.println(System.lineSeparator() + "El ejército ya tiene un nombre asignado.");
@@ -220,19 +217,18 @@ public class Ejercito {
 
                     break;
                 case "i":
-
                     try {
                         if (saldoPeso >= MIN_UNIDADES && hayGeneral) {
                             System.out.println(System.lineSeparator() + "Su Ejército está formado por: "
                                     + System.lineSeparator());
+
                             informacionEjercito();
 
                             actualizarEjercito();
-
                             break;
                         }
 
-                        if (nombre.isEmpty() || nombre.isBlank()) {
+                        if (nombre == null || nombre.isEmpty() || nombre.isBlank()) {
                             throw new EjercitoNombreException(Message.EJERCITO_SIN_NOMBRE);
                         }
 
@@ -244,9 +240,6 @@ public class Ejercito {
                     } catch (EjercitoNombreException | UnidadMinimaException | GeneralMinimoException e) {
                         System.out.println(e.getMessage());
                     }
-
-
-                    menu();
 
                     break;
                 default:
@@ -330,6 +323,19 @@ public class Ejercito {
     private void informacionEjercito() {
         for (Componentes unidad : unidades) {
             System.out.println(unidad);
+        }
+    }
+
+    private void asignarNombre(String nombre) {
+        try {
+            if (!nombres.contains(nombre)) {
+                nombres.add(nombre);
+                this.nombre = nombre;
+            } else {
+                throw new NombreExistenteException(Message.NOMBRE_EXISTENTE);
+            }
+        } catch (NombreExistenteException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
