@@ -20,4 +20,6 @@ public final class Message {
     public static final String OPCION_INAVLIDA = "Opción no válida";
     public static final String EJERCITO_GANADOR = "El ganador es el ejército ";
     public static final String NOMBRE_EXISTENTE = "El nombre ya existe";
+    public static final String UNIDAD_INEXISTENTE = "No existe la unidad";
+    public static final String UNIDAD_ELIM_SATIS = "Unidad eliminada satisfactoriamente";
 }
