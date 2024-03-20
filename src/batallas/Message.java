@@ -18,4 +18,6 @@ public final class Message {
     public static final String UNIDADES_MINIMAS = "El Ejército debe tener al menos 2 unidades";
     public static final String GENERAL_MINIMO = "El Ejército debe tener al menos 1 General";
     public static final String OPCION_INAVLIDA = "Opción no válida";
+    public static final String EJERCITO_GANADOR = "El ganador es el ejército ";
+    public static final String NOMBRE_EXISTENTE = "El nombre ya existe";
 }
