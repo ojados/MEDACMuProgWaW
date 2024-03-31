@@ -18,10 +18,10 @@ public class Batalla {
     private static final int MAX_RONDAS = 5;
     private final Ejercito ejercito1;
     private final Ejercito ejercito2;
-    private int numRondas;
-    private Ejercito ganador;
     private final ArrayList<Ronda> rondas;
     private final Random random = new Random();
+    private int numRondas;
+    private Ejercito ganador;
 
     public Batalla() {
         ejercito1 = new Ejercito();
@@ -32,10 +32,13 @@ public class Batalla {
     }
 
     private void luchar() {
+        System.out.println(Message.BATALLA_INICIO + ejercito1.getNombre() + " vs " + ejercito2.getNombre() + "!");
+
         Ejercito atacante;
         Ejercito defensor;
 
-        if (random.nextInt(1, 2) == 1) {
+        int resAtacante = random.nextInt(1, 3);
+        if (resAtacante == 1) {
             atacante = ejercito1;
             defensor = ejercito2;
         } else {

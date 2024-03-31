@@ -32,9 +32,9 @@ public class Ejercito {
     private static final int MAX_PESO = 50;
     private static final int MAX_ANIMALES = 3;
     private static final int MIN_UNIDADES = 2;
-    private int contadorAnimales = 0;
-    private final ArrayList<Componentes> unidades = new ArrayList<>();
     private static final List<String> nombres = new ArrayList<>();
+    private final ArrayList<Componentes> unidades = new ArrayList<>();
+    private int contadorAnimales = 0;
     private boolean hayGeneral = false;
     private int ataque;
     private int defensa;
@@ -93,7 +93,9 @@ public class Ejercito {
                         System.out.print(System.lineSeparator() + "Asignale un nombre a tu ejército: ");
 
                         asignarNombre(scanner.nextLine());
-                        System.out.println("Nombre del ejército: " + nombre + System.lineSeparator());
+                        if (!nombre.isEmpty()) {
+                            System.out.println("Nombre del ejército: " + nombre + System.lineSeparator());
+                        }
                     } else {
                         System.out.println(System.lineSeparator() + "El ejército ya tiene un nombre asignado.");
                         System.out.println("Nombre del ejército: " + nombre + System.lineSeparator());
