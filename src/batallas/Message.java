@@ -22,4 +22,5 @@ public final class Message {
     public static final String NOMBRE_EXISTENTE = "El nombre ya existe";
     public static final String UNIDAD_INEXISTENTE = "No existe la unidad";
     public static final String UNIDAD_ELIM_SATIS = "Unidad eliminada satisfactoriamente";
+    public static final String BATALLA_INICIO = "¡Comienza la batalla entre ";
 }
