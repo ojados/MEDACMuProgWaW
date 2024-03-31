@@ -3,24 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package medac_programacionbatalla;
-import Componentes.*;
-import EntradaSalida.ExploradorFicheros;
-import Batallas.Batalla;
+
+import batallas.Batalla;
+
 /**
- *
  * @author danie
  */
-public class MEDAC_ProgramacionBatalla{
+public class MEDAC_ProgramacionBatalla {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
 //        String test = ExploradorFicheros.leerFichero();
         Batalla batalla = new Batalla();
 
-    } }
+    }
+}
     
 
  
